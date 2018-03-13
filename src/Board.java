@@ -10,7 +10,8 @@ public class Board extends JPanel implements ActionListener{
     Timer timer;
     List<Objects> visuals = new ArrayList<Objects>();
 
-    final int armySize = 30;
+    int lX, lY, SCOL = 15;
+    final int BCOL = 5, BROW = 1, NCOL = 8, NROW = 7, SROW = 5;
 
     public Board(){
         setPreferredSize(new Dimension(900, 800));
@@ -21,10 +22,38 @@ public class Board extends JPanel implements ActionListener{
     }
 
     public void setStage(){
-        for(int i = 0; i < armySize; i++) {
-            int num1 = (int)(Math.random()*5)+1;
-            int num2 = (int)(Math.random()*5)+1;
-            visuals.add(0, new Enemies(Color.GREEN, getWidth() / num1, getHeight() / num2, 5, 10));
+        for(int i = 0; i < BROW; i++) {
+            lY = lY + 75;
+            for(int k = 0; k < BCOL; k++) {
+                lX = (lX + getWidth()/6);
+                visuals.add(0, new Enemies(Color.BLUE, lX, lY, 75, 25));
+            }
+            lX = 0;
+        }
+        lY = 75;
+        for(int i = 0; i < NROW; i++){
+            lY = lY + 50;
+            for(int k = 0; k < NCOL; k++){
+                lX = (lX + getWidth()/9);
+                visuals.add(0, new Enemies(Color.RED, lX, lY, 20, 15));
+            }
+            lX = 0;
+        }
+        lY = 450;
+        for(int i = 0;i < SROW; i++){
+            lY = lY + 25;
+            if(i%2 == 0) {
+               SCOL = SCOL - 1;
+               lX = (lX + getWidth()/15);
+            }
+            else{
+                SCOL = 15;
+                lX = (lX + getWidth()/16);
+            }
+            for(int k = 0; k < SCOL; k++){
+                visuals.add(0, new Enemies(Color.GREEN, lX, lY, 10, 5));
+            }
+            lX = 0;
         }
     }
 

@@ -12,4 +12,5 @@ public class Enemies extends Objects{
         g.setColor(color);
         g.fillRect(x, y, width, height);
     }
+
 }

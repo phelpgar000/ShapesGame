@@ -9,8 +9,8 @@ public class Objects implements Move, Paint{
 
     public Objects(Color color, int x, int y, int width, int height){
         this.color = color;
-        this.x = x;
-        this.y = y;
+        this.x = x - width/2;
+        this.y = y - height/2;
         this.width = width;
         this.height = height;
     }
