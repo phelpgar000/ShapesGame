@@ -30,7 +30,7 @@ public class Objects implements Move, Paint{
 
     @Override
     public Rectangle getBounds() {
-        return null;
+        return new Rectangle((int)(x + dx), (int)(y + dy), width, height);
     }
 
     @Override
