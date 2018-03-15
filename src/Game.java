@@ -1,8 +1,11 @@
 import javax.swing.*;
+import java.awt.event.KeyAdapter;
 
 public class Game extends JFrame {
 
     Board board;
+
+    boolean leftPressed, rightPressed;
 
     public Game(){
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -18,5 +21,14 @@ public class Game extends JFrame {
     public static void main(String[] args){
         Game game = new Game();
         game.board.setStage();
+    }
+
+    addKeyListener((new KeyAdapter) )
+
+    public boolean isLeftPressed(){
+        return leftPressed;
+    }
+    public boolean isRightPressed(){
+        return rightPressed;
     }
 }

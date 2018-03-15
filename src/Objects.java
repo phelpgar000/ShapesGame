@@ -5,6 +5,12 @@ public class Objects implements Move, Paint{
     Color color;
     public int x, y, width, height;
 
+    public int SPED = 5;
+    boolean leftPressed, rightPressed;
+
+    Game game;
+    Board board;
+
     double dx, dy;
 
     public Objects(Color color, int x, int y, int width, int height){
@@ -16,16 +22,16 @@ public class Objects implements Move, Paint{
     }
 
     @Override
-    public void move() {
-        /*if(rightPressed){
-            dx = 1;
-        }
-        if(leftPressed){
-            dx = -1;
-        }
+    public void move(int boardWidth) {
 
-        x*=dx;
-        */
+    }
+
+    public int getX(){
+        return x;
+    }
+
+    public int getY(){
+        return y;
     }
 
     @Override

@@ -62,6 +62,9 @@ public class Board extends JPanel implements ActionListener{
             }
             lX = 0;
         }
+        lX = getWidth()/2;
+        lY = getHeight()/10*9;
+        visuals.add(0, new Player(Color.CYAN, lX, lY, 35, 25));
     }
 
     public void paintComponent(Graphics g){
@@ -73,6 +76,7 @@ public class Board extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        visuals.get(0).move(getWidth());
         repaint();
     }
 }
