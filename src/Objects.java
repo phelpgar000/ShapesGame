@@ -13,17 +13,31 @@ public class Objects implements Move, Paint{
 
     double dx, dy;
 
-    public Objects(Color color, int x, int y, int width, int height){
+    public Objects(Color color, int x, int y, int width, int height, Game game){
         this.color = color;
         this.x = x - width/2;
         this.y = y - height/2;
         this.width = width;
         this.height = height;
+        this.game = game;
     }
 
     @Override
     public void move(int boardWidth) {
+    }
 
+    @Override
+    public void moveRight(){
+        if(x > 0){
+            x -= SPED;
+        }
+    }
+
+    @Override
+    public void moveLeft(int boardWidth){
+        if(x < boardWidth - width){
+            x += SPED;
+        }
     }
 
     public int getX(){

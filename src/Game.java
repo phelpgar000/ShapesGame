@@ -1,11 +1,11 @@
 import javax.swing.*;
-import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class Game extends JFrame {
+public class Game extends JFrame implements KeyListener{
 
     Board board;
-
-    boolean leftPressed, rightPressed;
+    Objects player;
 
     public Game(){
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -23,12 +23,22 @@ public class Game extends JFrame {
         game.board.setStage();
     }
 
-    addKeyListener((new KeyAdapter) )
+    @Override
+    public void keyTyped(KeyEvent e) {
 
-    public boolean isLeftPressed(){
-        return leftPressed;
     }
-    public boolean isRightPressed(){
-        return rightPressed;
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            player.moveRight();
+        }
+        if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            player.moveLeft(getWidth());
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
     }
 }

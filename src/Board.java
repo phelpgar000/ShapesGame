@@ -9,6 +9,7 @@ public class Board extends JPanel implements ActionListener{
 
     Timer timer;
     List<Objects> visuals = new ArrayList<Objects>();
+    Game other;
 
     int lX, lY, SCOL = 15, NCOL = 8;
     final int BCOL = 5, BROW = 1, NROW = 7, SROW = 5;
@@ -26,7 +27,7 @@ public class Board extends JPanel implements ActionListener{
             lY = lY + 75;
             for(int k = 0; k < BCOL; k++) {
                 lX = (lX + getWidth()/6);
-                visuals.add(0, new Enemies(Color.BLUE, lX, lY, 75, 25));
+                visuals.add(0, new Enemies(Color.BLUE, lX, lY, 75, 25, null));
             }
             lX = 0;
         }
@@ -42,7 +43,7 @@ public class Board extends JPanel implements ActionListener{
                     NCOL = 8;
                     lX = lX + getWidth()/9;
                 }
-                visuals.add(0, new Enemies(Color.RED, lX, lY, 20, 15));
+                visuals.add(0, new Enemies(Color.RED, lX, lY, 20, 15, null));
             }
             lX = 0;
         }
@@ -58,13 +59,13 @@ public class Board extends JPanel implements ActionListener{
                     SCOL = 15;
                     lX = (lX + getWidth()/16);
                 }
-                visuals.add(0, new Enemies(Color.GREEN, lX, lY, 10, 5));
+                visuals.add(0, new Enemies(Color.GREEN, lX, lY, 10, 5, null));
             }
             lX = 0;
         }
         lX = getWidth()/2;
         lY = getHeight()/10*9;
-        visuals.add(0, new Player(Color.CYAN, lX, lY, 35, 25));
+        visuals.add(new Player(Color.CYAN, lX, lY, 35, 25, other));
     }
 
     public void paintComponent(Graphics g){
