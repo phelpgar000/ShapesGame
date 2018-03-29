@@ -6,39 +6,35 @@ public class Objects implements Move, Paint{
     public int x, y, width, height;
 
     public int SPED = 5;
-    boolean leftPressed, rightPressed;
+    boolean leftPressed, rightPressed, isRemove;
 
     Game game;
     Board board;
+    Stats stats;
 
     double dx, dy;
 
-    public Objects(Color color, int x, int y, int width, int height, Game game){
+    public Objects(Color color, int x, int y, int width, int height){
         this.color = color;
         this.x = x - width/2;
         this.y = y - height/2;
         this.width = width;
         this.height = height;
-        this.game = game;
     }
 
-    @Override
-    public void move(int boardWidth) {
-    }
-
-    @Override
-    public void moveRight(){
-        if(x > 0){
-            x -= SPED;
+    public void move(int boardWidth, int boardHeight) {
+        if(Stats.isLeftPressed()) {
+            if (x > 0) {
+                x -= SPED;
+            }
+        }
+        if(Stats.isRightPressed()) {
+            if (x < boardWidth - width) {
+                x += SPED;
+            }
         }
     }
 
-    @Override
-    public void moveLeft(int boardWidth){
-        if(x < boardWidth - width){
-            x += SPED;
-        }
-    }
 
     public int getX(){
         return x;

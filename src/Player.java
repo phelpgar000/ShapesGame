@@ -7,8 +7,8 @@ public class Player extends Objects{
     Game game;
     Board board;
 
-    public Player(Color color, int x, int y, int width, int height, Game game){
-        super(color, x, y, width, height, game);
+    public Player(Color color, int x, int y, int width, int height){
+        super(color, x, y, width, height);
     }
 
     @Override
@@ -16,20 +16,6 @@ public class Player extends Objects{
 
         g.setColor(color);
         g.fillOval(x, y, width, height);
-    }
-
-    @Override
-    public void moveRight(){
-        if(x > 0){
-            x -= SPED;
-        }
-    }
-
-    @Override
-    public void moveLeft(int boardWidth){
-        if(x < boardWidth - width){
-            x += SPED;
-        }
     }
 
 }

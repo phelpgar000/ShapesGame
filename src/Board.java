@@ -11,8 +11,9 @@ public class Board extends JPanel implements ActionListener{
     List<Objects> visuals = new ArrayList<Objects>();
     Game other;
 
-    int lX, lY, SCOL = 15, NCOL = 8;
+    int lX, lY, x, y, SCOL = 15, NCOL = 8;
     final int BCOL = 5, BROW = 1, NROW = 7, SROW = 5;
+    int army = SCOL*NCOL*SROW*NROW*BCOL*BROW;
 
     public Board(){
         setPreferredSize(new Dimension(900, 800));
@@ -23,11 +24,17 @@ public class Board extends JPanel implements ActionListener{
     }
 
     public void setStage(){
+
+        x = getWidth()/2;
+        y = getHeight()/10*9;
+        visuals.add( 0, new Player(Color.CYAN, x, y, 35, 25));
+        visuals.add(new Attack(Color.green, visuals.get(0).x, visuals.get(0).y, 5, 5));
+
         for(int i = 0; i < BROW; i++) {
             lY = lY + 75;
             for(int k = 0; k < BCOL; k++) {
                 lX = (lX + getWidth()/6);
-                visuals.add(0, new Enemies(Color.BLUE, lX, lY, 75, 25, null));
+                visuals.add( new Enemies(Color.BLUE, lX, lY, 75, 25));
             }
             lX = 0;
         }
@@ -43,7 +50,7 @@ public class Board extends JPanel implements ActionListener{
                     NCOL = 8;
                     lX = lX + getWidth()/9;
                 }
-                visuals.add(0, new Enemies(Color.RED, lX, lY, 20, 15, null));
+                visuals.add(new Enemies(Color.RED, lX, lY, 20, 15));
             }
             lX = 0;
         }
@@ -59,13 +66,26 @@ public class Board extends JPanel implements ActionListener{
                     SCOL = 15;
                     lX = (lX + getWidth()/16);
                 }
-                visuals.add(0, new Enemies(Color.GREEN, lX, lY, 10, 5, null));
+                visuals.add(new Enemies(Color.GREEN, lX, lY, 10, 5));
             }
             lX = 0;
         }
-        lX = getWidth()/2;
-        lY = getHeight()/10*9;
-        visuals.add(new Player(Color.CYAN, lX, lY, 35, 25, other));
+    }
+
+    public void checkCollisions(){
+        for(int i = 0; i < visuals.size(); i++){
+            for(int j = 0; j < visuals.size(); j++){
+            }
+            if (visuals.get(i) instanceof Attack) {
+                if (((Attack) visuals.get(i)).isRemove()) {
+                    visuals.remove(i);
+                }
+            }
+        }
+    }
+
+    public void Shoot(){
+            visuals.add(new Attack(Color.green, visuals.get(0).x, visuals.get(0).y, 5, 5));
     }
 
     public void paintComponent(Graphics g){
@@ -77,7 +97,13 @@ public class Board extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        visuals.get(0).move(getWidth());
+
+        checkCollisions();
+
+        visuals.get(0).move(getWidth(), getHeight());
+        for(int i = 1;  i < visuals.size(); i++) {
+            visuals.get(i).move(getWidth(), getHeight());
+        }
         repaint();
     }
 }

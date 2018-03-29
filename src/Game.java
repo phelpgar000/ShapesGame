@@ -1,11 +1,15 @@
 import javax.swing.*;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Game extends JFrame implements KeyListener{
 
     Board board;
+    Stats stats;
     Objects player;
+
+    boolean rightPressed, leftPressed;
 
     public Game(){
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -31,14 +35,23 @@ public class Game extends JFrame implements KeyListener{
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-            player.moveRight();
+            Stats.toggleRight();
         }
         if(e.getKeyCode() == KeyEvent.VK_LEFT){
-            player.moveLeft(getWidth());
+            Stats.toggleLeft();
+        }
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            board.Shoot();
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            Stats.toggleRight();
+        }
+        if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            Stats.toggleLeft();
+        }
     }
 }
