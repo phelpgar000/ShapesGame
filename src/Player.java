@@ -17,5 +17,4 @@ public class Player extends Objects{
         g.setColor(color);
         g.fillOval(x, y, width, height);
     }
-
 }

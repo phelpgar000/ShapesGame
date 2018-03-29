@@ -18,6 +18,7 @@ public class Game extends JFrame implements KeyListener{
         setTitle("GALAKA");
         board = new Board();
         add(board);
+        addKeyListener(this);
         pack();
         setLocationRelativeTo(null);
     }
@@ -35,10 +36,10 @@ public class Game extends JFrame implements KeyListener{
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-            Stats.toggleRight();
+            Stats.rightYes();
         }
         if(e.getKeyCode() == KeyEvent.VK_LEFT){
-            Stats.toggleLeft();
+            Stats.leftYes();
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
             board.Shoot();
@@ -48,10 +49,10 @@ public class Game extends JFrame implements KeyListener{
     @Override
     public void keyReleased(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-            Stats.toggleRight();
+            Stats.rightNo();
         }
         if(e.getKeyCode() == KeyEvent.VK_LEFT){
-            Stats.toggleLeft();
+            Stats.leftNo();
         }
     }
 }

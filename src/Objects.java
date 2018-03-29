@@ -35,6 +35,11 @@ public class Objects implements Move, Paint{
         }
     }
 
+    public boolean collidesWith(Objects other){
+
+        return this.getBounds().intersects(other.getBounds());
+
+    }
 
     public int getX(){
         return x;

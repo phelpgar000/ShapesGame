@@ -1,10 +1,10 @@
 import java.awt.*;
 
-public class Attack extends Objects{
+public class Hurt extends Objects{
 
     private boolean isRemove;
 
-    public Attack(Color color, int x, int y, int width, int height){
+    public Hurt(Color color, int x, int y, int width, int height){
         super(color, x, y, width, height);
         isRemove = false;
     }
@@ -18,7 +18,7 @@ public class Attack extends Objects{
             isRemove = true;
         }
 
-        y += -10;
+        y += 10;
     }
 
     @Override
